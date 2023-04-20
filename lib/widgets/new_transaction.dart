@@ -8,6 +8,21 @@ class NewTransaction extends StatelessWidget {
 //Este es el constructor de "NewTransaction", el cual bindea el puntero que enviamos desde el widget anterior, con la variable final "addTransaction"
   /* --> */ NewTransaction(this.addTransaction); //<---
 //
+
+  void submitData() {
+    final enteredTitle = titleController.text;
+    final enteredAmount = double.parse(amountController.text);
+
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+    }
+
+    addTransaction(
+      enteredTitle,
+      enteredAmount,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -25,6 +40,7 @@ class NewTransaction extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: "Titulo",
               ),
+              onSubmitted: (_) => submitData(),
             ),
             TextField(
               keyboardType: TextInputType.number,
@@ -35,17 +51,13 @@ class NewTransaction extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: "Amount",
               ),
+              onSubmitted: (_) => submitData(),
             ),
             TextButton(
               style: ButtonStyle(
                 foregroundColor: MaterialStatePropertyAll(Colors.purple),
               ),
-              onPressed: () {
-                addTransaction(
-                  titleController.text,
-                  double.parse(amountController.text),
-                );
-              },
+              onPressed: submitData,
               child: Text("Agregar transaccion"),
             ),
           ],
