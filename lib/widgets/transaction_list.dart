@@ -20,11 +20,14 @@ class TransactionList extends StatelessWidget {
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   width: 110,
                   decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.purple,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                    border: Border.all(
+                      color: Colors.purple,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
+                  ),
                   padding: EdgeInsets.all(10),
                   child: Center(
                     child: Text(
